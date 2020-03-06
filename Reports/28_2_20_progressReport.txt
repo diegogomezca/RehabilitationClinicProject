@@ -1,0 +1,30 @@
+This week we expected to be able to do...
+
+finish the tables in SQL
+=========================================
+
+Optional: Reasons why
+
+it was the required thing this week
+---------------------
+
+This week we did...
+
+we tried to code all the tables and get some other work done. However, there are some mistakes in the sintaxis and
+we tried to fix them without success
+===================
+
+Optional: Reasons why
+
+One of those things was asked by the the teacher 
+---------------------
+
+This weeks we will do...
+
+the following week we'll correct the mistakes and go on with the project
+=======================
+
+Optional: Reasons why
+
+We want the best data basis ever
+---------------------

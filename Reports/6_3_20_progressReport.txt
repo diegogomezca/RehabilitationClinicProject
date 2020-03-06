@@ -1,4 +1,35 @@
-hola que tal
-soy manteca
-2 comit
-fdg
+# This week we expected to be able to do...
+
+Following the starndars of the "Progress Report Template" we should have had already finished with the point 7.
+And correct the mistakes and go on with the projects.
+
+(7. Prepare and present your mid-semester presentation. You’ll prepare a 15 to 20-minute
+	presentation that explains steps 1 to 6. Use PowerPoint.)
+=========================================
+
+# Optional: Reasons why...
+
+The last week we where busy and didn't finish with all the work that we had.
+---------------------
+
+# This week we did...
+
+We are up to date with all the delayed work.
+Digitize and improve our UML and ER Diagrams.  
+Also we created our project in gitHub and started working in it.
+===================
+
+# Optional: Reasons why
+
+We had to comeback on the project; And we did it!
+---------------------
+
+# Next weeks we will do...
+
+the following week we'll go on with the project and start to prepare the Midterm Presentation.
+========================
+
+# Optional: Reasons why...
+
+Because as we said, We want to create the best data basis ever.
+---------------------
