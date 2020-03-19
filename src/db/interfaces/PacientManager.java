@@ -4,7 +4,7 @@ import java.util.List;
 import pojos.*;
 
 
-public interface pacientManager {
+public interface PacientManager {
 
 	public void add (Pacient pacient);
 	// public void releaseDate
