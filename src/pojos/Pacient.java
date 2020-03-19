@@ -43,13 +43,13 @@ public class Pacient {
 		this.name = name;
 	}
 
-
-	public String getSex() {
+	
+	public Sexo getSex() {
 		return sex;
 	}
 
 
-	public void setSex(String sex) {
+	public void setSex(Sexo sex) {
 		this.sex = sex;
 	}
 
