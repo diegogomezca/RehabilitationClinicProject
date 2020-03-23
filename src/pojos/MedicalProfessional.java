@@ -18,8 +18,14 @@ public class MedicalProfessional implements Serializable {
 	private Blob photo;
 	private String email;
 	private String adress;
-	private int phone;
+	private int phoneNumber;
+	private Employee_Contract employee_contract;
 	public enum Sex {MALE, FEMALE}
+	
+	
+	public MedicalProfessional() {
+		super();
+	}
 	
 	public Integer getId() {
 		return id;
@@ -69,13 +75,18 @@ public class MedicalProfessional implements Serializable {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
-	public int getPhone() {
-		return phone;
+	public int getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setPhone(int phone) {
-		this.phone = phone;
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
-	
+	public Employee_Contract getEmployee_contract() {
+		return employee_contract;
+	}
+	public void setEmployee_contract(Employee_Contract employee_contract) {
+		this.employee_contract = employee_contract;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -83,7 +94,6 @@ public class MedicalProfessional implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -100,16 +110,14 @@ public class MedicalProfessional implements Serializable {
 			return false;
 		return true;
 	}
-	
 	@Override
 	public String toString() {
 		return "MedicalProfessional [id=" + id + ", name=" + name + ", dob=" + dob + ", sex=" + sex + ", profession="
-				+ profession + ", email=" + email + ", adress=" + adress + ", phone=" + phone + "]";
+				+ profession + ", email=" + email + ", adress=" + adress + ", phoneNumber=" + phoneNumber
+				+ ", employee_contract=" + employee_contract + "]";
 	}
 	
-	public MedicalProfessional() {
-		super();
-	}
+	
 	
 }
 

@@ -1,6 +1,7 @@
 package pojos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Department implements Serializable {
 
@@ -15,21 +16,12 @@ public class Department implements Serializable {
 	private int floor;
 	private float budget;
 	private Integer boss_id;
+	private ArrayList<Staff> staffList = new ArrayList<Staff> ();	
+	private ArrayList<MedicalProfessional> medicalProfessionalList = new ArrayList<MedicalProfessional> ();	
 	
-	@Override
-	public String toString() {
-		return "Department [id=" + id + ", name=" + name + ", floor=" + floor + ", budget=" + budget + ", boss_id="
-				+ boss_id + "]";
-	}
-	
-	
-	
-
 	public Department() {
 		super();
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -55,36 +47,67 @@ public class Department implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public int getFloor() {
 		return floor;
 	}
+
 	public void setFloor(int floor) {
 		this.floor = floor;
 	}
+
 	public float getBudget() {
 		return budget;
 	}
+
 	public void setBudget(float budget) {
 		this.budget = budget;
 	}
+
 	public Integer getBoss_id() {
 		return boss_id;
 	}
+
 	public void setBoss_id(Integer boss_id) {
 		this.boss_id = boss_id;
+	}
+
+	public ArrayList<Staff> getStaffList() {
+		return staffList;
+	}
+
+	public void setStaffList(ArrayList<Staff> staffList) {
+		this.staffList = staffList;
+	}
+
+	public ArrayList<MedicalProfessional> getMedicalProfessionalList() {
+		return medicalProfessionalList;
+	}
+
+	public void setMedicalProfessionalList(ArrayList<MedicalProfessional> medicalProfessionalList) {
+		this.medicalProfessionalList = medicalProfessionalList;
+	}
+
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", name=" + name + ", floor=" + floor + ", budget=" + budget + ", boss_id="
+				+ boss_id + ", staffList=" + staffList + ", medicalProfessionalList=" + medicalProfessionalList + "]";
 	}
 	
 	

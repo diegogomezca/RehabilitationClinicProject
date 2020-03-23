@@ -3,6 +3,7 @@ package pojos;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Staff implements Serializable{
 	
@@ -21,30 +22,16 @@ public class Staff implements Serializable{
 	private String profession;
 	private Blob photo;
 	private String adress;
-	private int phone;
+	private int phoneNumber;
 	private String email;
+	private Employee_Contract employee_contract;
 	
 	
+	public Staff() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
-	
-	public String getAdress() {
-		return adress;
-	}
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
-	public int getPhone() {
-		return phone;
-	}
-	public void setPhone(int phone) {
-		this.phone = phone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public Integer getId() {
 		return id;
 	}
@@ -81,12 +68,30 @@ public class Staff implements Serializable{
 	public void setPhoto(Blob photo) {
 		this.photo = photo;
 	}
-	
-	
-	public Staff() {
-		super();
+	public String getAdress() {
+		return adress;
 	}
-	
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Employee_Contract getEmployee_contract() {
+		return employee_contract;
+	}
+	public void setEmployee_contract(Employee_Contract employee_contract) {
+		this.employee_contract = employee_contract;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,8 +118,11 @@ public class Staff implements Serializable{
 	@Override
 	public String toString() {
 		return "Staff [id=" + id + ", name=" + name + ", sexo=" + sexo + ", dob=" + dob + ", profession=" + profession
-				+ ", adress=" + adress + ", phone=" + phone + ", email=" + email + "]";
-	}	
+				+ ", adress=" + adress + ", phoneNumber=" + phoneNumber + ", email=" + email + ", employee_contract="
+				+ employee_contract + "]";
+	}
+
+	
 
 	
 	
