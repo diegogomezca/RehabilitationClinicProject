@@ -18,6 +18,9 @@ public class Pacient implements Serializable{
 	private String nie;
 	private Blob photo;
 	private Boolean active;
+	private String email;
+	private int phoneNumber;
+	private String adress;
 	
 	public enum Sexo{
 		
@@ -26,6 +29,33 @@ public class Pacient implements Serializable{
 	
 	public Pacient() {
 		super();
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pacient other = (Pacient) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 
@@ -48,7 +78,7 @@ public class Pacient implements Serializable{
 		this.name = name;
 	}
 
-	
+
 	public Sexo getSex() {
 		return sex;
 	}
@@ -109,38 +139,45 @@ public class Pacient implements Serializable{
 	}
 
 
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+	public String getAdress() {
+		return adress;
+	}
+
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Pacient [id=" + id + ", name=" + name + ", sex=" + sex + ", dob=" + dob + ", intern=" + intern
-				+ ", nie=" + nie + ", active=" + active + "]";
+				+ ", nie=" + nie + ", active=" + active + ", email=" + email + ", phoneNumber=" + phoneNumber
+				+ ", adress=" + adress + "]";
 	}
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pacient other = (Pacient) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
+	
 	
 	
 }
