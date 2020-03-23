@@ -20,6 +20,31 @@ public class Staff implements Serializable{
 	private Date dob;
 	private String profession;
 	private Blob photo;
+	private String adress;
+	private int phone;
+	private String email;
+	
+	
+	
+	
+	public String getAdress() {
+		return adress;
+	}
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+	public int getPhone() {
+		return phone;
+	}
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -88,7 +113,7 @@ public class Staff implements Serializable{
 	@Override
 	public String toString() {
 		return "Staff [id=" + id + ", name=" + name + ", sexo=" + sexo + ", dob=" + dob + ", profession=" + profession
-				+ "]";
+				+ ", adress=" + adress + ", phone=" + phone + ", email=" + email + "]";
 	}	
 
 	
