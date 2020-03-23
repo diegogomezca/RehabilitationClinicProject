@@ -39,7 +39,7 @@ public class SQLiteManager implements DBManager {
 	@Override
 	public void createTables() {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
+
 		// Create tables: begin
 					Statement stmt1;
 					try {
@@ -217,10 +217,6 @@ public class SQLiteManager implements DBManager {
 						e.printStackTrace();
 					}
 					System.out.println("Tables created.");
-		
-=======
-
->>>>>>> branch 'master' of https://github.com/diegogomezca/RehabilitationClinicProject
 	}
 
 }
