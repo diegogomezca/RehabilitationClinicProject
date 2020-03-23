@@ -32,6 +32,38 @@ public class Pacient implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Pacient(String name, String nie, String email, int phoneNumber, String adress) {
+		super();
+		this.name = name;
+		this.nie = nie;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.adress = adress;
+	}
+	
+
+
+
+
+	public Pacient(Integer id, String name, Date dob, String nie, String email, int phoneNumber,
+			String adress) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.sex = sex;
+		this.dob = dob;
+		this.nie = nie;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.adress = adress;
+	}
+
+	public Pacient(String name) {
+		super();
+		this.name = name;
+	}
+
 	public Integer getId() {
 		return id;
 	}

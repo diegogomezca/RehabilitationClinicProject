@@ -6,4 +6,6 @@ public interface DBManager {
 	public void disconnect();
 	public void createTables();
 	
+	public PacientManager getPacientManager();
+	
 }
