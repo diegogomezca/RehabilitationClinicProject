@@ -2,20 +2,19 @@ package db.sqlite;
 
 import java.sql.*;
 
-
 import db.interfaces.DBManager;
 
 public class SQLiteManager implements DBManager {
 
 	private Connection c;
-	
-	protected Connection getConnection(){
+
+	protected Connection getConnection() {
 		return c;
 	}
-	
+
 	@Override
 	public void connect() {
-		
+
 		try {
 			Class.forName("org.sqlite.JDBC");
 			this.c = DriverManager.getConnection("jdbc:sqlite:./db/RehabilitationClinic.db");
@@ -24,7 +23,6 @@ public class SQLiteManager implements DBManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 
 	}
 
@@ -41,7 +39,7 @@ public class SQLiteManager implements DBManager {
 	@Override
 	public void createTables() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
