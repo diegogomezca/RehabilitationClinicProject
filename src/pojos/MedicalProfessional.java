@@ -16,9 +16,10 @@ public class MedicalProfessional implements Serializable {
 	private Sex sex;
 	private String profession;
 	private Blob photo;
+	private String email;
+	private String adress;
+	private int phone;
 	public enum Sex {MALE, FEMALE}
-	
-	
 	
 	public Integer getId() {
 		return id;
@@ -56,9 +57,23 @@ public class MedicalProfessional implements Serializable {
 	public void setPhoto(Blob photo) {
 		this.photo = photo;
 	}
-	
-	public MedicalProfessional() {
-		super();
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAdress() {
+		return adress;
+	}
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+	public int getPhone() {
+		return phone;
+	}
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 	
 	@Override
@@ -89,9 +104,12 @@ public class MedicalProfessional implements Serializable {
 	@Override
 	public String toString() {
 		return "MedicalProfessional [id=" + id + ", name=" + name + ", dob=" + dob + ", sex=" + sex + ", profession="
-				+ profession + "]";
+				+ profession + ", email=" + email + ", adress=" + adress + ", phone=" + phone + "]";
 	}
 	
+	public MedicalProfessional() {
+		super();
+	}
 	
 }
 
