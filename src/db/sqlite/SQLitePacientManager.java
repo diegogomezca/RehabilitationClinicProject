@@ -119,10 +119,35 @@ public class SQLitePacientManager implements PacientManager {
 		PreparedStatement prep = c.prepareStatement(sql);
 		prep.setInt(1, id);
 		prep.executeUpdate();
-		System.out.println("Deletion finished.");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Override 
+	public void updatePacient(Pacient pacient) {
+		
+		String sql = "UPDATE pacient SET name=? , intern=? , nie=?, active=?, email=?, phone=?, adress = ?, sex=? WHERE id=?";
+		PreparedStatement prep;
+		try {
+			prep = c.prepareStatement(sql);
+			
+			prep.setString(1, pacient.getName());
+			prep.setBoolean(2, pacient.getIntern());
+			prep.setString(3, pacient.getNie());
+			prep.setBoolean(4, pacient.getActive());
+			prep.setString(5, pacient.getEmail());
+			prep.setInt(6, pacient.getPhoneNumber());
+			prep.setString(7, pacient.getAdress());
+			prep.setString(8, pacient.getSex());
+			prep.setInt(9, pacient.getId());		
+			prep.executeUpdate();
+			System.out.println("Update finished.");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 

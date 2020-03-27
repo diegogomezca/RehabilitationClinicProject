@@ -31,20 +31,23 @@ public class Menu {
 		//dbManager.createTables();
 		
 		
-		Pacient newPacient = new Pacient("manteca",true,"098765432L",true,"mantecacorreo@gmail.com",987654321,"micasa","male");
+		Pacient newPacient = new Pacient("diego",true,"098765432L",true,"diegocorreo@gmail.com",987654321,"micasa","male");
+		
 		pacientManager.add(newPacient);
+		
 		List<Pacient> pacientList = pacientManager.searchByName("manteca");
 		
 		for(int i = 0; i< pacientList.size();i++) {
 			System.out.println(pacientList.get(i).toString());
 		}
 		
-		Pacient newpacient  = pacientManager.searchById(1);
-		System.out.println(newpacient);
+		newPacient.setActive(false);
+		newPacient.setIntern(false);
 		
-		pacientManager.deleteById(4);
+	
 		
-List<Pacient> pacientList1 = pacientManager.searchByName("manteca");
+		
+List<Pacient> pacientList1 = pacientManager.searchByName("diego");
 		
 		for(int i = 0; i< pacientList1.size();i++) {
 			System.out.println(pacientList1.get(i).toString());
