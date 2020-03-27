@@ -79,11 +79,37 @@ public class SQLitePacientManager implements PacientManager {
 		}
 		return pacientList;
 	}
-
+	
 	@Override
-	public List<Pacient> searchById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Pacient searchById (Integer id) {
+		
+		Pacient newPacient = null;
+		
+		try {
+			String sql = "SELECT * FROM pacient WHERE id LIKE ?";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setInt(1, id);
+			ResultSet rs = prep.executeQuery();
+			
+				int pacient_id = rs.getInt("id");
+				String pacientName = rs.getString("name");
+				String sex = rs.getString("sex");
+				Date dob = rs.getDate("dob");
+				String nie = rs.getString("nie");		
+				String email = rs.getString("email");
+				Boolean active = rs.getBoolean("active");
+				Boolean intern = rs.getBoolean("intern");
+				String adress = rs.getString("adress");
+				int phone = rs.getInt("phone");
+				
+			newPacient = new Pacient(pacient_id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	 return newPacient;
 	}
+
+
 
 }

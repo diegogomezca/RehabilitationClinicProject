@@ -39,6 +39,9 @@ public class Menu {
 			System.out.println(pacientList.get(i).toString());
 		}
 		
+		Pacient newpacient  = pacientManager.searchById(1);
+		System.out.println(newpacient);
+		
 		dbManager.disconnect();
 	}
 }

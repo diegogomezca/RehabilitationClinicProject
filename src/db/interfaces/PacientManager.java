@@ -10,7 +10,7 @@ public interface PacientManager {
 	// public void releaseDate
 	public void update (Pacient pacient);
 	public List<Pacient> searchByName (String name);
-	public List<Pacient> searchById (Integer id);
+	public Pacient searchById (Integer id);
 	// checkActive
 	
 }
