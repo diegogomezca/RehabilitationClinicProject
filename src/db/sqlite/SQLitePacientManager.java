@@ -106,8 +106,23 @@ public class SQLitePacientManager implements PacientManager {
 				
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		}
 	 return newPacient;
+	}
+	
+	@Override 
+	public void deleteById (Integer id) {
+		
+		try {
+		String sql = "DELETE FROM pacient WHERE id= ?";
+		PreparedStatement prep = c.prepareStatement(sql);
+		prep.setInt(1, id);
+		prep.executeUpdate();
+		System.out.println("Deletion finished.");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 

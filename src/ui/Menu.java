@@ -42,6 +42,15 @@ public class Menu {
 		Pacient newpacient  = pacientManager.searchById(1);
 		System.out.println(newpacient);
 		
+		pacientManager.deleteById(4);
+		
+List<Pacient> pacientList1 = pacientManager.searchByName("manteca");
+		
+		for(int i = 0; i< pacientList1.size();i++) {
+			System.out.println(pacientList1.get(i).toString());
+		}
+		
+		
 		dbManager.disconnect();
 	}
 }
