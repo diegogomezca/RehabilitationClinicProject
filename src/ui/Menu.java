@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.Date;
 import java.time.format.DateTimeFormatter;
-
+import java.util.*;
 
 import db.interfaces.*;
 import db.sqlite.SQLiteManager;
@@ -31,9 +31,13 @@ public class Menu {
 		//dbManager.createTables();
 		
 		
-		
-		Pacient newPacient = new Pacient("manteca","esteesmidni","mantecacorreo",98,"micasa");
+		Pacient newPacient = new Pacient("manteca",true,"098765432L",true,"mantecacorreo@gmail.com",987654321,"micasa","male");
 		pacientManager.add(newPacient);
+		List<Pacient> pacientList = pacientManager.searchByName("manteca");
+		
+		for(int i = 0; i< pacientList.size();i++) {
+			System.out.println(pacientList.get(i).toString());
+		}
 		
 		dbManager.disconnect();
 	}

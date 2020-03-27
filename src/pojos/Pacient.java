@@ -13,7 +13,6 @@ public class Pacient implements Serializable{
 	private static final long serialVersionUID = 2071328715533081411L;
 	private Integer id;
 	private String name;
-	private Sexo sex;
 	private Date dob;
 	private Boolean intern;
 	private String nie;
@@ -23,10 +22,7 @@ public class Pacient implements Serializable{
 	private int phoneNumber;
 	private String adress;
 	private ArrayList<Dissability> dissabilityList = new ArrayList<Dissability> ();	
-	public enum Sexo{
-		
-		MALE,FEMALE
-	}
+	private String sex;
 	
 	public Pacient() {
 		super();
@@ -42,10 +38,6 @@ public class Pacient implements Serializable{
 		this.adress = adress;
 	}
 	
-
-
-
-
 	public Pacient(Integer id, String name, Date dob, String nie, String email, int phoneNumber,
 			String adress) {
 		super();
@@ -62,7 +54,35 @@ public class Pacient implements Serializable{
 	public Pacient(String name) {
 		super();
 		this.name = name;
+	}		
+	
+	public Pacient(Integer id, String name, Date dob, Boolean intern, String nie, Boolean active, String email,
+			int phoneNumber, String adress, String sex) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dob = dob;
+		this.intern = intern;
+		this.nie = nie;
+		this.active = active;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.adress = adress;
+		this.sex = sex;
 	}
+
+	public Pacient(String name, Boolean intern, String nie, Boolean active, String email, int phoneNumber,String adress, String sex) {
+		super();
+		this.name = name;
+		this.intern = intern;
+		this.nie = nie;
+		this.active = active;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.adress = adress;
+		this.sex = sex;
+	}
+
 
 	public Integer getId() {
 		return id;
@@ -76,10 +96,10 @@ public class Pacient implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Sexo getSex() {
+	public String getSex() {
 		return sex;
 	}
-	public void setSex(Sexo sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 	public Date getDob() {

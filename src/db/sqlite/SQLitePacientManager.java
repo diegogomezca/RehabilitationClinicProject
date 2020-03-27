@@ -16,25 +16,26 @@ public class SQLitePacientManager implements PacientManager {
 	private Connection c;
 
 	public SQLitePacientManager(Connection n) {
-		this.c = c;
+		this.c = n;
 	}
 
 	@Override
 	public void add(Pacient pacient) {
 
 		try {
-			String sql = "INSERT INTO pacient (name, nie, email,  adress , phone) "
-					+ "VALUES (?,?,?,?,?);";
-			System.out.println("hola");
+			String sql = "INSERT INTO pacient (name, sex ,nie, email, active ,intern, adress , phone) "
+					+ "VALUES (?,?,?,?,?,?,?,?);";
+			
 			PreparedStatement prep = c.prepareStatement(sql);
-			System.out.println("hola");
 			prep.setString(1, pacient.getName());
-			//(2, pacient.getSex());
+			prep.setString(2, pacient.getSex());
 			//prep.setDate(3, pacient.getDob());
-			prep.setString(2, pacient.getNie());
-			prep.setString(3, pacient.getEmail());
-			prep.setString(4, pacient.getAdress());
-			prep.setInt(5, pacient.getPhoneNumber());
+			prep.setString(3, pacient.getNie());
+			prep.setString(4, pacient.getEmail());
+			prep.setBoolean(5, pacient.getActive());
+			prep.setBoolean(6, pacient.getIntern());
+			prep.setString(7, pacient.getAdress());
+			prep.setInt(8, pacient.getPhoneNumber());
 
 			prep.executeUpdate();
 			prep.close();
@@ -61,12 +62,16 @@ public class SQLitePacientManager implements PacientManager {
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String pacientName = rs.getString("name");
+				String sex = rs.getString("sex");
 				Date dob = rs.getDate("dob");
-				String nie = rs.getString("mie");
+				String nie = rs.getString("nie");		
 				String email = rs.getString("email");
-				String adress = rs.getString("address");
+				Boolean active = rs.getBoolean("active");
+				Boolean intern = rs.getBoolean("intern");
+				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
-				Pacient newPacient = new Pacient(id, pacientName,dob, nie, email, phone, adress);
+				
+				Pacient newPacient = new Pacient(id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
 				pacientList.add(newPacient);
 			}
 		} catch (Exception e) {
