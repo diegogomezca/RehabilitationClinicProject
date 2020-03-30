@@ -7,19 +7,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import db.interfaces.DepartmentManager;
 import db.interfaces.PacientManager;
 import pojos.Department;
 import pojos.Pacient;
 
 //Estos metodos no incluyen stafflist ni medical professionallist, porque son atributos que añadimos mas tarde y no estan en las tabas
-public class SQLiteDepartment {
+public class SQLiteDepartmentManager implements DepartmentManager {
 	
 	private Connection c;
 
-	public SQLiteDepartment(Connection n) {
+	public SQLiteDepartmentManager(Connection n) {
 		this.c = n;
 	}
-		
+	
+	@Override
 	public void add(Department department) {
 	
 		try {
@@ -37,6 +40,7 @@ public class SQLiteDepartment {
 			e.printStackTrace();}
 	}
 
+	@Override
 	public List<Department> searchByName(String name) {
 		List<Department> departmentList = new ArrayList<Department>();
 		try {
@@ -60,7 +64,8 @@ public class SQLiteDepartment {
 		return departmentList;
 	}
 
-	public Department searchByid(Integer id1) {
+	@Override
+	public Department searchByid (Integer id1) {
 	Department newDepartment = new Department();
 	try {
 		String sql = "SELECT * FROM depatment WHERE id LIKE ?";
@@ -82,6 +87,7 @@ public class SQLiteDepartment {
 	return newDepartment;
 }
 
+	@Override
 	public void deleteById (Integer id) {
 		
 		try {
@@ -95,4 +101,5 @@ public class SQLiteDepartment {
 		}
 	}
 
+	
 }

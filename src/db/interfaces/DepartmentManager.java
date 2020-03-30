@@ -9,5 +9,5 @@ public interface DepartmentManager {
 	public List<Department> searchById (Integer id);
 	public void add (Department department);
 	public void update (Department department);
-	
+	public void deleteById (Integer id)
 }
