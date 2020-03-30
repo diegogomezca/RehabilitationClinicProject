@@ -7,7 +7,8 @@ import pojos.*;
 public interface MedicalPorfessionalManager {
 	
 	public List<MedicalProfessional> searchByName (String name);
-	public List <MedicalProfessional> searchById (Integer id);
+	public MedicalProfessional searchById (Integer id);
 	public void add (MedicalProfessional medicalProfessional);
-	public void update (MedicalProfessional medicalProfessional);
+	public void deleteById (Integer id);
+	public void updateMedicalProfessional(MedicalProfessional medicalProfessional);
 }
