@@ -119,7 +119,6 @@ public class SQLitePacientManager implements PacientManager {
 		}
 	}
 	
-	@Override 
 	public void updatePacient(Pacient pacient) {
 		
 		String sql = "UPDATE pacient SET name=? , intern=? , nie=?, active=?, email=?, phone=?, adress = ?, sex=? WHERE id=?";

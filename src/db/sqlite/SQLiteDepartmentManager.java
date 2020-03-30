@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import db.interfaces.DepartmentManager;
 import db.interfaces.PacientManager;
 import pojos.Department;
@@ -65,7 +66,7 @@ public class SQLiteDepartmentManager implements DepartmentManager {
 	}
 
 	@Override
-	public Department searchByid (Integer id1) {
+	public Department searchById (Integer id1) {
 	Department newDepartment = new Department();
 	try {
 		String sql = "SELECT * FROM depatment WHERE id LIKE ?";
@@ -100,6 +101,27 @@ public class SQLiteDepartmentManager implements DepartmentManager {
 			e.printStackTrace();
 		}
 	}
+	
+		@Override
+		public void updateDepartment(Department department) {
+			
+			String sql = "UPDATE department SET name=? , budget=? , floor=?, boss_id=? WHERE id=?";
+			PreparedStatement prep;
+			try {
+				prep = c.prepareStatement(sql);
+				
+				prep.setString(1, department.getName());
+				prep.setFloat(2, department.getBudget());
+				prep.setInt(3, department.getFloor());
+				prep.setInt(4, department.getBoss_id());
+				prep.setInt(5, department.getId());		
+				prep.executeUpdate();
+				System.out.println("Update finished.");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();}
+		}
+	}
 
 	
-}
+
