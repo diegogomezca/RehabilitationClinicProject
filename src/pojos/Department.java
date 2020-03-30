@@ -22,6 +22,21 @@ public class Department implements Serializable {
 	public Department() {
 		super();
 	}
+	
+	
+
+
+	public Department(Integer id, String name, int floor, float budget, Integer boss_id) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.floor = floor;
+		this.budget = budget;
+		this.boss_id = boss_id;
+	}
+
+
+
 
 	@Override
 	public int hashCode() {
