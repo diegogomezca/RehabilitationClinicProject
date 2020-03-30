@@ -45,11 +45,6 @@ public class SQLitePacientManager implements PacientManager {
 
 	}
 
-	@Override
-	public void update(Pacient pacient) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public List<Pacient> searchByName(String name) {
@@ -149,6 +144,7 @@ public class SQLitePacientManager implements PacientManager {
 		}
 		
 	}
+
 
 
 
