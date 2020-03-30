@@ -17,7 +17,23 @@ public class Staff implements Serializable{
 	
 	private Integer id;
 	private String name;
-	private Sexo sexo;
+	private String nif;
+	public String getNif() {
+		return nif;
+	}
+
+	public void setNif(String nif) {
+		this.nif = nif;
+	}
+	public boolean getActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	private boolean active;
+	private String sex;
 	private Date dob;
 	private String profession;
 	private Blob photo;
@@ -32,6 +48,21 @@ public class Staff implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+	public Staff(int id, String name, Date dob, String nif, boolean active, String email, int phone, String adress, String sex) {
+		
+		this.id =id;
+		this.name = name;
+		this.nif = nif;
+		this.active = active;
+		this.email = email;
+		this.phoneNumber = phone;
+		this.adress = adress;
+		this.sex = sex;
+		this.dob = dob;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -44,11 +75,11 @@ public class Staff implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Sexo getSexo() {
-		return sexo;
+	public String getSex() {
+		return sex;
 	}
-	public void setSexo(Sexo sexo) {
-		this.sexo = sexo;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	public Date getDob() {
 		return dob;
@@ -117,7 +148,7 @@ public class Staff implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Staff [id=" + id + ", name=" + name + ", sexo=" + sexo + ", dob=" + dob + ", profession=" + profession
+		return "Staff [id=" + id + ", name=" + name + ", sexo=" + sex + ", dob=" + dob + ", profession=" + profession
 				+ ", adress=" + adress + ", phoneNumber=" + phoneNumber + ", email=" + email + ", employee_contract="
 				+ employee_contract + "]";
 	}
