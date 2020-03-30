@@ -9,7 +9,7 @@ public interface StaffManager {
 	public void add(Staff staff);
 	public void update(Staff staff);
 	public List<Staff> searchByName(String name);
-	public List<Staff> searchById(Integer id);
+	public Staff searchById(Integer id);
 	
 
 }

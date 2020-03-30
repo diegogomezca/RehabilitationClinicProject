@@ -29,6 +29,16 @@ public class Pacient implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+
+	public Pacient(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+
+
 	public Pacient(String name, String nie, String email, int phoneNumber, String adress) {
 		super();
 		this.name = name;
