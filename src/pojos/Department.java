@@ -7,9 +7,6 @@ public class Department implements Serializable {
 
 	
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6234791722618349000L;
 	private Integer id;
 	private String name;
@@ -25,7 +22,6 @@ public class Department implements Serializable {
 	
 	
 
-
 	public Department(Integer id, String name, int floor, float budget, Integer boss_id) {
 		super();
 		this.id = id;
@@ -34,7 +30,6 @@ public class Department implements Serializable {
 		this.budget = budget;
 		this.boss_id = boss_id;
 	}
-
 
 
 

@@ -7,25 +7,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+
+import db.interfaces.DepartmentManager;
 import db.interfaces.PacientManager;
 import pojos.Department;
 import pojos.Pacient;
 
 //Estos metodos no incluyen stafflist ni medical professionallist, porque son atributos que añadimos mas tarde y no estan en las tabas
-public class SQLiteDepartmentManager {
+public class SQLiteDepartmentManager implements DepartmentManager {
 	
 	private Connection c;
 
 	public SQLiteDepartmentManager(Connection n) {
 		this.c = n;
 	}
-		
+	
+	@Override
 	public void add(Department department) {
 	
 		try {
 			String sql = "INSERT INTO department (name, budget ,floor,boss_id ) "
 					+ "VALUES (?,?,?,?);";
-			
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, department.getName());
 			prep.setFloat(2, department.getBudget());
@@ -38,6 +41,7 @@ public class SQLiteDepartmentManager {
 			e.printStackTrace();}
 	}
 
+	@Override
 	public List<Department> searchByName(String name) {
 		List<Department> departmentList = new ArrayList<Department>();
 		try {
@@ -61,7 +65,8 @@ public class SQLiteDepartmentManager {
 		return departmentList;
 	}
 
-	public Department searchByid(Integer id1) {
+	@Override
+	public Department searchById (Integer id1) {
 	Department newDepartment = new Department();
 	try {
 		String sql = "SELECT * FROM depatment WHERE id LIKE ?";
@@ -83,6 +88,7 @@ public class SQLiteDepartmentManager {
 	return newDepartment;
 }
 
+	@Override
 	public void deleteById (Integer id) {
 		
 		try {
@@ -95,23 +101,27 @@ public class SQLiteDepartmentManager {
 			e.printStackTrace();
 		}
 	}
-
-	public void updateDepartment(Department department) {
-		
-		String sql = "UPDATE department SET name=? , budget=? , floor=?, boss_id=? WHERE id=?";
-		PreparedStatement prep;
-		try {
-			prep = c.prepareStatement(sql);
+	
+		@Override
+		public void updateDepartment(Department department) {
 			
-			prep.setString(1, department.getName());
-			prep.setFloat(2, department.getBudget());
-			prep.setInt(3, department.getFloor());
-			prep.setInt(4, department.getBoss_id());
-			prep.setInt(5, department.getId());		
-			prep.executeUpdate();
-			System.out.println("Update finished.");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();}
+			String sql = "UPDATE department SET name=? , budget=? , floor=?, boss_id=? WHERE id=?";
+			PreparedStatement prep;
+			try {
+				prep = c.prepareStatement(sql);
+				
+				prep.setString(1, department.getName());
+				prep.setFloat(2, department.getBudget());
+				prep.setInt(3, department.getFloor());
+				prep.setInt(4, department.getBoss_id());
+				prep.setInt(5, department.getId());		
+				prep.executeUpdate();
+				System.out.println("Update finished.");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();}
+		}
 	}
-}
+
+	
+

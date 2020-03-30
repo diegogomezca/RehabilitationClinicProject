@@ -3,12 +3,14 @@ package db.sqlite;
 import java.sql.*;
 
 import db.interfaces.DBManager;
+import db.interfaces.DepartmentManager;
 import db.interfaces.PacientManager;
 
 public class SQLiteManager implements DBManager {
 
 	private Connection c;
 	private PacientManager pacient;
+	private DepartmentManager department;
 
 	@Override
 	public void connect() {
@@ -19,6 +21,7 @@ public class SQLiteManager implements DBManager {
 			c.createStatement().execute("PRAGMA foreign_keys=ON");
 			
 			pacient = new SQLitePacientManager(c);
+			department = new SQLiteDepartmentManager(c);
 			//We could initialize other manager here
 			System.out.println("Database connection opened.");
 		} catch (Exception e) {
@@ -189,6 +192,12 @@ public class SQLiteManager implements DBManager {
 	public PacientManager getPacientManager() {
 		
 		return pacient;
+	}
+
+	@Override
+	public DepartmentManager getDepartmentManager() {
+		
+		return department;
 	}
 
 }

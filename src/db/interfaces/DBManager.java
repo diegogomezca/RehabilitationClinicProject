@@ -7,5 +7,5 @@ public interface DBManager {
 	public void createTables();
 	
 	public PacientManager getPacientManager();
-	
+	public DepartmentManager getDepartmentManager();
 }
