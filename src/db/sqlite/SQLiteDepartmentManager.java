@@ -12,11 +12,11 @@ import pojos.Department;
 import pojos.Pacient;
 
 //Estos metodos no incluyen stafflist ni medical professionallist, porque son atributos que añadimos mas tarde y no estan en las tabas
-public class SQLiteDepartment {
+public class SQLiteDepartmentManager {
 	
 	private Connection c;
 
-	public SQLiteDepartment(Connection n) {
+	public SQLiteDepartmentManager(Connection n) {
 		this.c = n;
 	}
 		
@@ -96,4 +96,22 @@ public class SQLiteDepartment {
 		}
 	}
 
+	public void updateDepartment(Department department) {
+		
+		String sql = "UPDATE department SET name=? , budget=? , floor=?, boss_id=? WHERE id=?";
+		PreparedStatement prep;
+		try {
+			prep = c.prepareStatement(sql);
+			
+			prep.setString(1, department.getName());
+			prep.setFloat(2, department.getBudget());
+			prep.setInt(3, department.getFloor());
+			prep.setInt(4, department.getBoss_id());
+			prep.setInt(5, department.getId());		
+			prep.executeUpdate();
+			System.out.println("Update finished.");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();}
+	}
 }
