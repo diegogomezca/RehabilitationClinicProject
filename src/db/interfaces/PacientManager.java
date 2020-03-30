@@ -12,19 +12,7 @@ public interface PacientManager {
 	public List<Pacient> searchByName (String name);
 	public Pacient searchById (Integer id);
 	public void deleteById(Integer id);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/diegogomezca/RehabilitationClinicProject.git
 	public void updatePacient(Pacient pacient);
 
-<<<<<<< HEAD
-=======
->>>>>>> branch 'master' of https://github.com/diegogomezca/RehabilitationClinicProject
->>>>>>> branch 'master' of https://github.com/diegogomezca/RehabilitationClinicProject
-	// checkActive
->>>>>>> branch 'master' of https://github.com/diegogomezca/RehabilitationClinicProject.git
-	
+
 }
