@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
+   <top>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <TitledPane animated="false" text="WELCOME TO THE REHAB CLINIC!">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="30.0" prefWidth="598.0">
+                     <children>
+                        <MenuBar layoutX="-1.0" prefHeight="34.0" prefWidth="600.0">
+                          <menus>
+                            <Menu mnemonicParsing="false" text="About Us">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Log In">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Patient" />
+                                    <MenuItem mnemonicParsing="false" text="Medical Professional" />
+                                    <MenuItem mnemonicParsing="false" onAction="#addPatient" text="Rceptionist" />
+                                    <MenuItem mnemonicParsing="false" text="HR/CEO" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Exit">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                              </items>
+                            </Menu>
+                          </menus>
+                        </MenuBar>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
