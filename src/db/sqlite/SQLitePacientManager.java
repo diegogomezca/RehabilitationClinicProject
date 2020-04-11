@@ -118,7 +118,8 @@ public class SQLitePacientManager implements PacientManager {
 			e.printStackTrace();
 		}
 	}
-	
+
+		@Override
 	public void updatePacient(Pacient pacient) {
 		
 		String sql = "UPDATE pacient SET name=? , intern=? , nie=?, active=?, email=?, phone=?, adress = ?, sex=? WHERE id=?";

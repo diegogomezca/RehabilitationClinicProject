@@ -94,6 +94,13 @@ public class Pacient implements Serializable{
 	}
 
 
+	public Pacient(String name2, String nif, String phoneNumber2, String adress2, String email2, String sex2,
+			Boolean intern2) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public Integer getId() {
 		return id;
 	}

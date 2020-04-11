@@ -13,18 +13,39 @@ public class MedicalProfessional implements Serializable {
 	private Integer id;
 	private String name;
 	private Date dob;
-	private Sex sex;
+	private String sex;
 	private String profession;
 	private Blob photo;
 	private String email;
 	private String adress;
 	private int phoneNumber;
+	private String nif;
 	private Employee_Contract employee_contract;
-	public enum Sex {MALE, FEMALE}
 	
 	
-	public MedicalProfessional() {
+
+	
+	public MedicalProfessional(Integer id, String name, Date dob, String sex, String profession, String email,
+			String adress, int phoneNumber, String nif) {
 		super();
+		this.id = id;
+		this.name = name;
+		this.dob = dob;
+		this.sex = sex;
+		this.profession = profession;
+		this.email = email;
+		this.adress = adress;
+		this.phoneNumber = phoneNumber;
+		this.nif = nif;
+	}
+
+
+	public String getNif() {
+		return nif;
+	}
+
+	public void setNif(String nif) {
+		this.nif = nif;
 	}
 	
 	public Integer getId() {
@@ -45,10 +66,10 @@ public class MedicalProfessional implements Serializable {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-	public Sex getSex() {
+	public String getSex() {
 		return sex;
 	}
-	public void setSex(Sex sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 	public String getProfession() {
@@ -116,8 +137,7 @@ public class MedicalProfessional implements Serializable {
 				+ profession + ", email=" + email + ", adress=" + adress + ", phoneNumber=" + phoneNumber
 				+ ", employee_contract=" + employee_contract + "]";
 	}
-	
-	
+
 	
 }
 
