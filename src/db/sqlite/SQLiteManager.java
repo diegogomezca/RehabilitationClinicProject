@@ -45,6 +45,8 @@ public class SQLiteManager implements DBManager {
 		// TODO Auto-generated method stub
 
 		// Create tables: begin
+		
+		
 		Statement stmt1;
 		try {
 			stmt1 = c.createStatement();

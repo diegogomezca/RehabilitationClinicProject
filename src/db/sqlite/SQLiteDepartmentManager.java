@@ -38,7 +38,8 @@ public class SQLiteDepartmentManager implements DepartmentManager {
 			prep.executeUpdate();
 			prep.close();
 		} catch (SQLException e) {
-			e.printStackTrace();}
+			e.printStackTrace();
+		}
 	}
 
 	@Override

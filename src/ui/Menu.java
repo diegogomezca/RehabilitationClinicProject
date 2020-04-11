@@ -26,8 +26,15 @@ public class Menu {
 		dbManager = new SQLiteManager();
 		dbManager.connect();
 		
+		/*pacientManager = dbManager.getPacientManager();
+		Pacient newPacient = new Pacient("manteca",true,"098765432L",true,"diegocorreo@gmail.com",987654321,"micasa","male");
+		pacientManager.add(newPacient);
+		*/
 		Submenu1 submenu1 = new Submenu1();
 		submenu1.submenu1_method();
+		
+		
+		dbManager.disconnect();
 		/*reader = new BufferedReader(new InputStreamReader(System.in));
 		
 		dbManager = new SQLiteManager();

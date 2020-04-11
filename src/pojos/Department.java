@@ -22,6 +22,16 @@ public class Department implements Serializable {
 	
 	
 
+	public Department(String name, int floor, float budget, Integer boss_id) {
+		super();
+		this.name = name;
+		this.floor = floor;
+		this.budget = budget;
+		this.boss_id = boss_id;
+	}
+
+
+
 	public Department(Integer id, String name, int floor, float budget, Integer boss_id) {
 		super();
 		this.id = id;
