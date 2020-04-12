@@ -2,6 +2,7 @@ package pojos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Department implements Serializable {
 
@@ -13,14 +14,23 @@ public class Department implements Serializable {
 	private int floor;
 	private float budget;
 	private Integer boss_id;
-	private ArrayList<Staff> staffList = new ArrayList<Staff> ();	
-	private ArrayList<MedicalProfessional> medicalProfessionalList = new ArrayList<MedicalProfessional> ();	
+	private List<Staff> staffList = new ArrayList<Staff> ();	
+	private List<MedicalProfessional> medicalProfessionalList = new ArrayList<MedicalProfessional> ();	
 	
 	public Department() {
 		super();
 	}
 	
 	
+
+	public Department(String name, int floor, float budget) {
+		super();
+		this.name = name;
+		this.floor = floor;
+		this.budget = budget;
+	}
+
+
 
 	public Department(String name, int floor, float budget, Integer boss_id) {
 		super();
@@ -32,6 +42,16 @@ public class Department implements Serializable {
 
 
 
+	public Department(Integer id, String name, int floor, float budget, Integer boss_id, List medicalProfessionalList) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.floor = floor;
+		this.budget = budget;
+		this.boss_id = boss_id;
+		this.medicalProfessionalList = medicalProfessionalList;
+	}
+	
 	public Department(Integer id, String name, int floor, float budget, Integer boss_id) {
 		super();
 		this.id = id;
@@ -40,6 +60,7 @@ public class Department implements Serializable {
 		this.budget = budget;
 		this.boss_id = boss_id;
 	}
+
 
 
 
@@ -108,7 +129,7 @@ public class Department implements Serializable {
 		this.boss_id = boss_id;
 	}
 
-	public ArrayList<Staff> getStaffList() {
+	public List<Staff> getStaffList() {
 		return staffList;
 	}
 
@@ -116,13 +137,21 @@ public class Department implements Serializable {
 		this.staffList = staffList;
 	}
 
-	public ArrayList<MedicalProfessional> getMedicalProfessionalList() {
+	
+
+	
+
+	public List<MedicalProfessional> getMedicalProfessionalList() {
 		return medicalProfessionalList;
 	}
 
-	public void setMedicalProfessionalList(ArrayList<MedicalProfessional> medicalProfessionalList) {
+
+
+	public void setMedicalProfessionalList(List<MedicalProfessional> medicalProfessionalList) {
 		this.medicalProfessionalList = medicalProfessionalList;
 	}
+
+
 
 	@Override
 	public String toString() {

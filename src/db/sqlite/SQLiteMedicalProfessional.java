@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import db.interfaces.MedicalPorfessionalManager;
+import db.interfaces.MedicalProfessionalManager;
 import pojos.MedicalProfessional;
 
 
-public class SQLiteMedicalProfessional implements MedicalPorfessionalManager{
+public class SQLiteMedicalProfessional implements MedicalProfessionalManager{
 	
 	private Connection c;
 
@@ -24,12 +24,13 @@ public class SQLiteMedicalProfessional implements MedicalPorfessionalManager{
 	@Override 
 	public void add(MedicalProfessional medicalProfessional) {
 		 
-		String sql = "INSERT INTO medical_professional(name, sex, profession, email, adress, phone, nif)"
-				+ "(VALUES (?,?,?,?,?,?);)";
 		
-		PreparedStatement prep;
+		
+	
 		try {
-			prep = c.prepareStatement(sql);
+			String sql = "INSERT INTO medical_professional(name, sex, profession, email, adress, phone, nie, dep_id)"
+					+ "VALUES (?,?,?,?,?,?,?,?);";
+			PreparedStatement prep = c.prepareStatement(sql);
 			
 			prep.setString(1, medicalProfessional.getName());
 			//prep.setDate(2, medicalProfessional.getDob());
@@ -39,6 +40,7 @@ public class SQLiteMedicalProfessional implements MedicalPorfessionalManager{
 			prep.setString(5, medicalProfessional.getAdress());
 			prep.setInt(6, medicalProfessional.getPhoneNumber());
 			prep.setString(7, medicalProfessional.getNif());
+			prep.setInt(8, medicalProfessional.getDep_id());
 			
 			prep.executeUpdate();
 			prep.close();
@@ -67,8 +69,8 @@ public class SQLiteMedicalProfessional implements MedicalPorfessionalManager{
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
 				String nif = rs.getString("nif");
-				
-				MedicalProfessional newMedicalProfessional = new MedicalProfessional(id, MedicalProfessionalName, dob, sex, profession, email, adress, phone, nif);
+				Integer dep_id = rs.getInt("dep_id");
+				MedicalProfessional newMedicalProfessional = new MedicalProfessional(id, MedicalProfessionalName, dob, sex, profession, email, adress, phone, nif,dep_id);
 				medicalProfessionalList.add(newMedicalProfessional);
 			}
 		} catch (Exception e) {
@@ -97,8 +99,9 @@ public class SQLiteMedicalProfessional implements MedicalPorfessionalManager{
 			String adress = rs.getString("adress");
 			int phone = rs.getInt("phone");
 			String nif = rs.getString("nif");
+			Integer dep_id = rs.getInt("dep_id");
 			
-			newMedicalProfessional = new MedicalProfessional(medicalProfessional_id, medicalProfessionalName, dob, sex, profession, email, adress, phone, nif);
+			newMedicalProfessional = new MedicalProfessional(medicalProfessional_id, medicalProfessionalName, dob, sex, profession, email, adress, phone, nif,dep_id);
 				
 		} catch (Exception e) {
 			e.printStackTrace();
