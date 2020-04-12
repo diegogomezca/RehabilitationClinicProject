@@ -10,7 +10,6 @@ public class SQLiteManager implements DBManager {
 
 	private Connection c;
 	private PacientManager pacient;
-	private DepartmentManager department;
 
 	@Override
 	public void connect() {
@@ -21,7 +20,6 @@ public class SQLiteManager implements DBManager {
 			c.createStatement().execute("PRAGMA foreign_keys=ON");
 			
 			pacient = new SQLitePacientManager(c);
-			department = new SQLiteDepartmentManager(c);
 			//We could initialize other manager here
 			System.out.println("Database connection opened.");
 		} catch (Exception e) {
@@ -118,7 +116,7 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt6 = c.createStatement();
 			String sql6 = "CREATE TABLE medical_professional" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-					+ "name TEXT NOT NULL," + "dob TEXT NOT NULL," + "profession TEXT NOT NULL,"
+					+ "name TEXT NOT NULL," + "dob TEXT ," + "profession TEXT NOT NULL,"
 					+ "email TEXT NOT NULL," + "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB,"
 					+ "sex TEXT NOT NULL,"
 					+ "contract_id INTEGER NOT NULL REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
@@ -196,8 +194,8 @@ public class SQLiteManager implements DBManager {
 
 	@Override
 	public DepartmentManager getDepartmentManager() {
-		
-		return department;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

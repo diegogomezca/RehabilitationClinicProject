@@ -21,7 +21,7 @@ public class Menu {
 	private static DBManager dbManager;
 	private static PacientManager pacientManager;
 	
-	/*public static void main(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception{
 		
 		dbManager = new SQLiteManager();
 		dbManager.connect();
@@ -77,5 +77,5 @@ List<Pacient> pacientList1 = pacientManager.searchByName("diego");
 		
 		dbManager.disconnect();
 		*/
-	}*/
+	}
 }
