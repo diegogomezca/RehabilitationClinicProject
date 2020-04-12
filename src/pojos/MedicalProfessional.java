@@ -21,6 +21,7 @@ public class MedicalProfessional implements Serializable {
 	private int phoneNumber;
 	private String nif;
 	private Employee_Contract employee_contract;
+	private Integer dep_id;
 	
 	
 

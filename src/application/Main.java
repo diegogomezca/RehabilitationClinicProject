@@ -22,7 +22,7 @@ public class Main extends Application {
 			//primaryStage.setScene(scene);
 			//primaryStage.show();
 
-		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("newPatient.fxml"));
+		Parent menuSceneRoot = FXMLLoader.load(getClass().getResource("newMedicalProfessional.fxml"));
 		Scene newMenu = new Scene(menuSceneRoot);
 
 		stage.setScene(newMenu);

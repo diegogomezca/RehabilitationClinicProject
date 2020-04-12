@@ -12,7 +12,7 @@ import java.util.List;
 import db.interfaces.DepartmentManager;
 import db.interfaces.PacientManager;
 import pojos.Department;
-import pojos.Pacient;
+import pojos.Patient;
 
 //Estos metodos no incluyen stafflist ni medical professionallist, porque son atributos que añadimos mas tarde y no estan en las tabas
 public class SQLiteDepartmentManager implements DepartmentManager {

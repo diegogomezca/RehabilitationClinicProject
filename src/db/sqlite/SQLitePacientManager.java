@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.interfaces.PacientManager;
-import pojos.Pacient;
+import pojos.Patient;
 
 public class SQLitePacientManager implements PacientManager {
 
@@ -20,7 +20,7 @@ public class SQLitePacientManager implements PacientManager {
 	}
 
 	@Override
-	public void add(Pacient pacient) {
+	public void add(Patient pacient) {
 
 		try {
 			String sql = "INSERT INTO pacient (name, sex ,nie, email, active ,intern, adress , phone) "
@@ -47,8 +47,8 @@ public class SQLitePacientManager implements PacientManager {
 
 
 	@Override
-	public List<Pacient> searchByName(String name) {
-		List<Pacient> pacientList = new ArrayList<Pacient>();
+	public List<Patient> searchByName(String name) {
+		List<Patient> pacientList = new ArrayList<Patient>();
 		try {
 			String sql = "SELECT * FROM pacient WHERE name LIKE ?";
 			PreparedStatement prep = c.prepareStatement(sql);
@@ -66,7 +66,7 @@ public class SQLitePacientManager implements PacientManager {
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
 				
-				Pacient newPacient = new Pacient(id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
+				Patient newPacient = new Patient(id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
 				pacientList.add(newPacient);
 			}
 		} catch (Exception e) {
@@ -76,9 +76,9 @@ public class SQLitePacientManager implements PacientManager {
 	}
 	
 	@Override
-	public Pacient searchById (Integer id) {
+	public Patient searchById (Integer id) {
 		
-		Pacient newPacient = null;
+		Patient newPacient = null;
 		
 		try {
 			String sql = "SELECT * FROM pacient WHERE id LIKE ?";
@@ -97,7 +97,7 @@ public class SQLitePacientManager implements PacientManager {
 				String adress = rs.getString("adress");
 				int phone = rs.getInt("phone");
 				
-			newPacient = new Pacient(pacient_id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
+			newPacient = new Patient(pacient_id, pacientName,dob, intern, nie,active, email,phone,adress,sex);
 				
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,7 +120,7 @@ public class SQLitePacientManager implements PacientManager {
 	}
 
 		@Override
-	public void updatePacient(Pacient pacient) {
+	public void updatePacient(Patient pacient) {
 		
 		String sql = "UPDATE pacient SET name=? , intern=? , nie=?, active=?, email=?, phone=?, adress = ?, sex=? WHERE id=?";
 		PreparedStatement prep;

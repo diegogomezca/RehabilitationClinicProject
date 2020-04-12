@@ -2,40 +2,34 @@ package application;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import pojos.Pacient;
+import pojos.Patient;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 import db.interfaces.*;
 import db.sqlite.SQLiteManager;
 
-public class newPatientController{
+
+
+public class newPatientController implements Initializable{
 
 @FXML private TextField txtName, txtNif, txtPhoneNumber, txtAdress, txtEmail;
 @FXML private ChoiceBox<String> sexChoiceBox;
-
-ObservableList<String> sexList = FXCollections.observableArrayList("Male", "Female","Other");
-
 @FXML private RadioButton radioButtonYes, radioButtonNo;
 @FXML private ToggleGroup internGroup;
-@FXML private DatePicker dob;
-
-
-@FXML
-private void initialize(){
-	sexChoiceBox.setItems(sexList);
-	sexChoiceBox.setValue("Male");
-
-	//radio button
-	internGroup = new ToggleGroup();
-	//radioButtonNo.setToggleGroup(internGroup);
-	//radioButtonNo.setSelected(true);
-	//radioButtonYes.setToggleGroup(internGroup);
-}
+@FXML private DatePicker dobPicker;
 
 private static DBManager dbManager;
 private static PacientManager pacientManager;
@@ -51,6 +45,10 @@ public void introducePatient(){
 	String email = txtEmail.getText();
 	String sex = sexChoiceBox.getValue();
 	Boolean intern = false; //miraaaar esto
+	LocalDate date = dobPicker.getValue();
+
+	//Pasamos de LocalDate a Date
+	Date dob = Date.valueOf(date);
 
 	int number = Integer.parseInt(phoneNumber);
 
@@ -60,7 +58,8 @@ public void introducePatient(){
 	}else intern = true;*/
 
 
-	Pacient newPacient = new Pacient(name, intern, nif,true, email, number,adress, sex );
+
+	Patient newPacient = new Patient(name, intern, nif,true, email, number,adress, sex );
 	//System.out.println(pacient);
 
 	dbManager = new SQLiteManager();
@@ -72,6 +71,13 @@ public void introducePatient(){
 
 }
 
+public void backToMenu(ActionEvent event){
+	System.out.print("hola");
+	SceneChanger sc = new SceneChanger();
+	sc.changeScenes(event,"menu.fxml", "menu");
+	//System.out.print("hola");
+}
+
 public void clear(){
 
 	txtName.clear();
@@ -80,6 +86,16 @@ public void clear(){
 	txtEmail.clear();
 	txtPhoneNumber.clear();
 	sexChoiceBox.setValue("Male");
+}
+
+@Override
+public void initialize(URL location, ResourceBundle resources) {
+	// TODO Auto-generated method stub
+
+	ObservableList<String> sexList = FXCollections.observableArrayList("Male", "Female","Other");
+	sexChoiceBox.setItems(sexList);
+	sexChoiceBox.setValue("Male");
+
 }
 
 }
