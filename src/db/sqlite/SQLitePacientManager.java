@@ -50,7 +50,7 @@ public class SQLitePacientManager implements PacientManager {
 	public List<Patient> searchByName(String name) {
 		List<Patient> pacientList = new ArrayList<Patient>();
 		try {
-			String sql = "SELECT * FROM pacient WHERE name LIKE ?";
+			String sql = "SELECT * FROM pacient WHERE name LIKE ?;";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, "%" + name + "%");
 			ResultSet rs = prep.executeQuery();
@@ -81,7 +81,7 @@ public class SQLitePacientManager implements PacientManager {
 		Patient newPacient = null;
 		
 		try {
-			String sql = "SELECT * FROM pacient WHERE id LIKE ?";
+			String sql = "SELECT * FROM pacient WHERE id LIKE ?;";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setInt(1, id);
 			ResultSet rs = prep.executeQuery();

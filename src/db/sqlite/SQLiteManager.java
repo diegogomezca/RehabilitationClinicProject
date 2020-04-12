@@ -4,6 +4,7 @@ import java.sql.*;
 
 import db.interfaces.DBManager;
 import db.interfaces.DepartmentManager;
+import db.interfaces.MedicalProfessionalManager;
 import db.interfaces.PacientManager;
 
 public class SQLiteManager implements DBManager {
@@ -11,6 +12,7 @@ public class SQLiteManager implements DBManager {
 	private Connection c;
 	private PacientManager pacient;
 	private DepartmentManager department;
+	private MedicalProfessionalManager medical_professional;
 
 	@Override
 	public void connect() {
@@ -22,6 +24,7 @@ public class SQLiteManager implements DBManager {
 			
 			pacient = new SQLitePacientManager(c);
 			department = new SQLiteDepartmentManager(c);
+			medical_professional = new SQLiteMedicalProfessional(c);
 			//We could initialize other manager here
 			System.out.println("Database connection opened.");
 		} catch (Exception e) {
@@ -45,12 +48,14 @@ public class SQLiteManager implements DBManager {
 		// TODO Auto-generated method stub
 
 		// Create tables: begin
+		
+		
 		Statement stmt1;
 		try {
 			stmt1 = c.createStatement();
 			String sql1 = "CREATE TABLE department " + "(id INTEGER PRIMARY KEY AUTOINCREMENT," + "name TEXT NOT NULL,"
 					+ "budget REAL NOT NULL," + "floor INTEGER NOT NULL,"
-					+ "boss_id INTEGER NOT NULL REFERENCES employee(id) ON UPDATE CASCADE ON DELETE SET NULL)";
+					+ "boss_id INTEGER REFERENCES medical_professional(id) ON UPDATE CASCADE ON DELETE SET NULL)";
 
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
@@ -76,7 +81,7 @@ public class SQLiteManager implements DBManager {
 		Statement stmt3;
 		try {
 			stmt3 = c.createStatement();
-			String sql3 = "CREATE TABLE emmployee_contract" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+			String sql3 = "CREATE TABLE employee_contract" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
 					+ "free_days INTEGER NOT NULL," + "starting_date  DATE NOT NULL," + "finishing_date DATE NOT NULL,"
 					+ "salary REAL NOT NULL," + "week_hours REAL NOT NULL)";
 
@@ -118,10 +123,10 @@ public class SQLiteManager implements DBManager {
 		try {
 			stmt6 = c.createStatement();
 			String sql6 = "CREATE TABLE medical_professional" + "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-					+ "name TEXT NOT NULL," + "dob TEXT NOT NULL," + "profession TEXT NOT NULL,"
+					+ "name TEXT NOT NULL," + "dob TEXT," + "profession TEXT NOT NULL,"
 					+ "email TEXT NOT NULL," + "adress TEXT NOT NULL," + "phone INTEGER NOT NULL," + "photo BLOB,"
-					+ "sex TEXT NOT NULL,"
-					+ "contract_id INTEGER NOT NULL REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
+					+ "sex TEXT NOT NULL," + "nie TEXT NOT NULL,"
+					+ "contract_id INTEGER REFERENCES employee_contract(id) ON UPDATE CASCADE ON DELETE SET NULL,"
 					+ "dep_id INTEGER NOT NULL REFERENCES department(id) ON UPDATE CASCADE ON DELETE SET NULL)";
 			stmt6.executeUpdate(sql6);
 			stmt6.close();
@@ -198,6 +203,12 @@ public class SQLiteManager implements DBManager {
 	public DepartmentManager getDepartmentManager() {
 		
 		return department;
+	}
+
+	@Override
+	public MedicalProfessionalManager getMedicalProfessionalManager() {
+		
+		return medical_professional;
 	}
 
 }

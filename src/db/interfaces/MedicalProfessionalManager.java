@@ -4,7 +4,7 @@ import java.util.List;
 
 import pojos.*;
 
-public interface MedicalPorfessionalManager {
+public interface MedicalProfessionalManager {
 	
 	public List<MedicalProfessional> searchByName (String name);
 	public MedicalProfessional searchById (Integer id);
