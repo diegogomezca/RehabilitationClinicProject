@@ -20,13 +20,18 @@ public class MedicalProfessional implements Serializable {
 	private String adress;
 	private int phoneNumber;
 	private String nif;
+
 	private Employee_Contract employee_contract;
+
+	private Integer employee_contractId;
+
+	private Integer dep_id;
 	
 	
 
 	
 	public MedicalProfessional(Integer id, String name, Date dob, String sex, String profession, String email,
-			String adress, int phoneNumber, String nif) {
+			String adress, int phoneNumber, String nif, Integer dep_id) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -37,7 +42,49 @@ public class MedicalProfessional implements Serializable {
 		this.adress = adress;
 		this.phoneNumber = phoneNumber;
 		this.nif = nif;
+		this.dep_id = dep_id;
 	}
+	
+	
+
+
+	public MedicalProfessional(String name, Date dob, String sex, String profession, Blob photo, String email,
+			String adress, int phoneNumber, String nif, Integer dep_id) {
+		super();
+		this.name = name;
+		this.dob = dob;
+		this.sex = sex;
+		this.profession = profession;
+		this.photo = photo;
+		this.email = email;
+		this.adress = adress;
+		this.phoneNumber = phoneNumber;
+		this.nif = nif;
+		this.dep_id = dep_id;
+	}
+
+
+
+
+	public MedicalProfessional(String name, String sex, String profession, String email, String adress, int phoneNumber,
+			String nif, Integer dep_id) {
+		super();
+		this.name = name;
+		this.sex = sex;
+		this.profession = profession;
+		this.email = email;
+		this.adress = adress;
+		this.phoneNumber = phoneNumber;
+		this.nif = nif;
+		this.dep_id = dep_id;
+	}
+
+
+
+
+
+
+
 
 
 	public String getNif() {
@@ -102,12 +149,32 @@ public class MedicalProfessional implements Serializable {
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public Employee_Contract getEmployee_contract() {
-		return employee_contract;
+	
+	
+	public Integer getEmployee_contractId() {
+		return employee_contractId;
 	}
-	public void setEmployee_contract(Employee_Contract employee_contract) {
-		this.employee_contract = employee_contract;
+
+
+
+
+	public void setEmployee_contractId(Integer employee_contractId) {
+		this.employee_contractId = employee_contractId;
 	}
+
+
+
+
+	public Integer getDep_id() {
+		return dep_id;
+	}
+
+
+	public void setDep_id(Integer dep_id) {
+		this.dep_id = dep_id;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -131,12 +198,18 @@ public class MedicalProfessional implements Serializable {
 			return false;
 		return true;
 	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "MedicalProfessional [id=" + id + ", name=" + name + ", dob=" + dob + ", sex=" + sex + ", profession="
-				+ profession + ", email=" + email + ", adress=" + adress + ", phoneNumber=" + phoneNumber
-				+ ", employee_contract=" + employee_contract + "]";
+				+ profession + ", photo=" + photo + ", email=" + email + ", adress=" + adress + ", phoneNumber="
+				+ phoneNumber + ", nif=" + nif + ", employee_contractId=" + employee_contractId + ", dep_id=" + dep_id
+				+ "]";
 	}
+
 
 	
 }

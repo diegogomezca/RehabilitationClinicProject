@@ -12,9 +12,11 @@ import java.util.List;
 import db.interfaces.DepartmentManager;
 import db.interfaces.PacientManager;
 import pojos.Department;
-import pojos.Pacient;
 
-//Estos metodos no incluyen stafflist ni medical professionallist, porque son atributos que añadimos mas tarde y no estan en las tabas
+import pojos.Patient;
+import pojos.MedicalProfessional;
+
+
 public class SQLiteDepartmentManager implements DepartmentManager {
 	
 	private Connection c;
@@ -27,18 +29,19 @@ public class SQLiteDepartmentManager implements DepartmentManager {
 	public void add(Department department) {
 	
 		try {
-			String sql = "INSERT INTO department (name, budget ,floor,boss_id ) "
+			String sql = "INSERT INTO department (name, budget ,floor,boss_id) "
 					+ "VALUES (?,?,?,?);";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, department.getName());
 			prep.setFloat(2, department.getBudget());
 			prep.setInt(3, department.getFloor());
-			prep.setInt(4, department.getBoss_id());
+			//prep.setInt(4, department.getBoss_id());
 			
 			prep.executeUpdate();
 			prep.close();
 		} catch (SQLException e) {
-			e.printStackTrace();}
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -66,22 +69,54 @@ public class SQLiteDepartmentManager implements DepartmentManager {
 	}
 
 	@Override
-	public Department searchById (Integer id1) {
+	public Department searchById (Integer id) {
 	Department newDepartment = new Department();
 	try {
-		String sql = "SELECT * FROM depatment WHERE id LIKE ?";
+		String sql = "SELECT * FROM department AS d JOIN medical_professional AS m ON d.id = m.dep_id"
+				+ " WHERE d.id LIKE ?;";
+		//id name budget floor boss_id id name dob profession email adress phone photo sex nie contract_id dep_id
+		
 		PreparedStatement prep = c.prepareStatement(sql);
-		prep.setInt(1, id1);
+		prep.setInt(1, id);
 		ResultSet rs = prep.executeQuery();
+		List<MedicalProfessional> listMedicalProfessional = new ArrayList<MedicalProfessional>();
 		
-			int id = rs.getInt("id");
-			String departmentName = rs.getString("name");
-			Float budget = rs.getFloat("budget");
-			int floor = rs.getInt("floor");
-			Integer boss_id = rs.getInt("boss_id");
+		boolean departmentCreated = false;
+		while (rs.next()){
+			
+			if(!departmentCreated) {
+			int departmentId = rs.getInt(1);
+			String departmentName = rs.getString(2);
+			Float budget = rs.getFloat(3);
+			int floor = rs.getInt(4);
+			Integer boss_id = rs.getInt(5);
 
-			newDepartment = new Department(id,departmentName,floor,budget,boss_id);
-		
+			newDepartment = new Department(departmentId,departmentName,floor,budget,boss_id,listMedicalProfessional);
+			departmentCreated = true;
+			}
+			
+			
+			int medical_professionalId = rs.getInt(6);
+			String medical_professionalName = rs.getString(7);
+			Date medical_professionaldob = rs.getDate(8);
+			String medical_professionalProfession = rs.getString(9);
+			String medical_professionalEmail = rs.getString(10);
+			String medical_professionalAdress = rs.getString(11);
+			int medical_professionalPhone = rs.getInt(12);
+			String medical_professionalSex = rs.getString(14);
+			String medical_professionalNIE = rs.getString(15);
+			int medical_professionaldep_id = rs.getInt(16);
+			MedicalProfessional newMedicalProfessional = new MedicalProfessional(medical_professionalId,medical_professionalName,
+					medical_professionaldob,medical_professionalSex,medical_professionalProfession,medical_professionalEmail,
+					medical_professionalAdress,medical_professionalPhone,medical_professionalNIE,medical_professionaldep_id);
+			listMedicalProfessional.add(newMedicalProfessional);
+			//Integer id, String name, Date dob, String sex, String profession, String email,
+			//String adress, int phoneNumber, String nif, Integer dep_id
+			
+			
+			
+			
+		}
 	} catch (Exception e) {
 		e.printStackTrace();
 	}

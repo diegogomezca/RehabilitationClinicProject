@@ -3,9 +3,11 @@ package pojos;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
-public class Pacient implements Serializable{
+public class Patient implements Serializable{
 
 	/**
 	 * 
@@ -13,7 +15,7 @@ public class Pacient implements Serializable{
 	private static final long serialVersionUID = 2071328715533081411L;
 	private Integer id;
 	private String name;
-	private Date dob;
+	private LocalDate dob = null;
 	private Boolean intern;
 	private String nie;
 	private Blob photo;
@@ -24,14 +26,14 @@ public class Pacient implements Serializable{
 	private ArrayList<Dissability> dissabilityList = new ArrayList<Dissability> ();	
 	private String sex;
 	
-	public Pacient() {
+	public Patient() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 
-	public Pacient(Integer id, String name) {
+	public Patient(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,7 +41,7 @@ public class Pacient implements Serializable{
 
 
 
-	public Pacient(String name, String nie, String email, int phoneNumber, String adress) {
+	public Patient(String name, String nie, String email, int phoneNumber, String adress) {
 		super();
 		this.name = name;
 		this.nie = nie;
@@ -48,8 +50,8 @@ public class Pacient implements Serializable{
 		this.adress = adress;
 	}
 	
-	public Pacient(Integer id, String name, Date dob, String nie, String email, int phoneNumber,
-			String adress) {
+	public Patient(Integer id, String name, LocalDate dob, String nie, String email, int phoneNumber,
+			String adress, String sex) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -61,17 +63,17 @@ public class Pacient implements Serializable{
 		this.adress = adress;
 	}
 
-	public Pacient(String name) {
+	public Patient(String name) {
 		super();
 		this.name = name;
 	}		
 	
-	public Pacient(Integer id, String name, Date dob, Boolean intern, String nie, Boolean active, String email,
+	public Patient(Integer id, String name, Boolean intern, String nie, Boolean active, String email,
 			int phoneNumber, String adress, String sex) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.dob = dob;
+		//this.dob = dob;
 		this.intern = intern;
 		this.nie = nie;
 		this.active = active;
@@ -81,7 +83,7 @@ public class Pacient implements Serializable{
 		this.sex = sex;
 	}
 
-	public Pacient(String name, Boolean intern, String nie, Boolean active, String email, int phoneNumber,String adress, String sex) {
+	public Patient(String name, Boolean intern, String nie, Boolean active, String email, int phoneNumber,String adress, String sex) {
 		super();
 		this.name = name;
 		this.intern = intern;
@@ -94,7 +96,7 @@ public class Pacient implements Serializable{
 	}
 
 
-	public Pacient(String name2, String nif, String phoneNumber2, String adress2, String email2, String sex2,
+	public Patient(String name2, String nif, String phoneNumber2, String adress2, String email2, String sex2,
 			Boolean intern2) {
 		// TODO Auto-generated constructor stub
 	}
@@ -119,11 +121,19 @@ public class Pacient implements Serializable{
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public void setDob(LocalDate dob) {
+		
+		int age = Period.between(dob, LocalDate.now()).getYears();
+		if(age >=5 && age <= 120){
+			this.dob = dob;
+		}else{
+			throw new IllegalArgumentException ("This date is not valid");
+		}
+		
+		
 	}
 	public Boolean getIntern() {
 		return intern;
@@ -188,7 +198,7 @@ public class Pacient implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pacient other = (Pacient) obj;
+		Patient other = (Patient) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
